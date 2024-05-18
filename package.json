@@ -1,0 +1,5 @@
+{
+  "scripts": {
+    "1": "pnpm --filter \"01-drum-kit\" run dev"
+  }
+}
