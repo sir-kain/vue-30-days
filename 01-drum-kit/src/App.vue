@@ -1,77 +1,63 @@
 <script setup lang="ts">
-import { onMounted } from 'vue'
 import KeyboardKey from './components/KeyboardKey.vue'
 import type { KeyType } from './types/KeyboardKey'
 
 const keys: KeyType[] = [
   {
     id: 'a',
+    code: 'KeyA',
     name: 'clap',
     sound: 'sounds/clap.wav'
   },
   {
     id: 's',
+    code: 'KeyS',
     name: 'hihat',
     sound: 'sounds/hihat.wav'
   },
   {
     id: 'd',
+    code: 'KeyD',
     name: 'kick',
     sound: 'sounds/kick.wav'
   },
   {
     id: 'f',
+    code: 'KeyF',
     name: 'openhat',
     sound: 'sounds/openhat.wav'
   },
   {
     id: 'g',
+    code: 'KeyG',
     name: 'boom',
     sound: 'sounds/boom.wav'
   },
   {
     id: 'h',
+    code: 'KeyH',
     name: 'ride',
     sound: 'sounds/ride.wav'
   },
   {
     id: 'j',
+    code: 'KeyJ',
     name: 'snare',
     sound: 'sounds/snare.wav'
   },
   {
     id: 'k',
+    code: 'KeyK',
     name: 'tom',
     sound: 'sounds/tom.wav'
   },
   {
     id: 'l',
+    code: 'KeyL',
     name: 'tink',
     sound: 'sounds/tink.wav'
   }
 ]
-
-function removeTransition(e) {
-  if (e.propertyName !== 'transform') return
-  e.target.classList.remove('playing')
-}
-
-function playSound(e: KeyboardEvent) {
-  const audio: HTMLAudioElement | null = document.querySelector(`audio[data-key="${e.key}"]`)
-  const key = document.querySelector(`div[data-key="${e.key}"]`)
-  if (!audio || !key) return
-
-  key.classList.add('playing')
-  audio.currentTime = 0
-  audio.play()
-}
-
-onMounted(() => {
-  window.addEventListener('keydown', playSound)
-  document
-    .querySelectorAll('.key')
-    .forEach((key) => key.addEventListener('transitionend', removeTransition))
-})
 </script>
 
 <template>
